@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · Yuxuan Lin</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<style>
+  .notfound {
+    max-width: 44rem;
+    margin: 0 auto;
+    padding: clamp(3rem, 12vh, 8rem) 1.5rem 4rem;
+  }
+  .notfound .code {
+    font-family: var(--mono);
+    font-size: .75rem;
+    letter-spacing: .18em;
+    color: var(--accent);
+    margin-bottom: 1rem;
+  }
+  .notfound h1 {
+    font-size: clamp(1.9rem, 5vw, 2.6rem);
+    margin-bottom: .75rem;
+  }
+  .notfound p { color: var(--ink-soft); max-width: 34rem; }
+  .notfound .back {
+    display: inline-block;
+    margin-top: 1.75rem;
+    font-family: var(--sans);
+    font-size: .85rem;
+    border: 1px solid var(--rule-strong);
+    border-radius: 999px;
+    padding: .45rem 1rem;
+    color: var(--ink);
+  }
+  .notfound .back:hover { background: var(--ink); color: var(--paper); text-decoration: none; }
+</style>
+</head>
+<body>
+  <main class="notfound">
+    <p class="code">ERROR 404</p>
+    <h1>This page has moved, or never existed.</h1>
+    <p>
+      The link may be out of date. Everything on this site lives on one page —
+      the section you were looking for is probably a little further down.
+    </p>
+    <a class="back" href="/">Back to the homepage</a>
+  </main>
+</body>
+</html>

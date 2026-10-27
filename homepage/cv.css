@@ -1,0 +1,192 @@
+/* ==========================================================================
+   Curriculum Vitae — screen view + A4 print layout
+   ========================================================================== */
+
+:root {
+  --paper: #ffffff;
+  --ink: #14161a;
+  --ink-soft: #33363d;
+  --muted: #6a6f7a;
+  --rule: #dcd8cf;
+  --accent: #8a3324;
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+           Georgia, "Songti SC", "SimSun", serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --mono: ui-monospace, "SF Mono", Consolas, "Liberation Mono", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 2.5rem 1rem 4rem;
+  background: #eceae4;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 14px;
+  line-height: 1.52;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---------- screen toolbar (never printed) ---------- */
+.toolbar {
+  max-width: 210mm;
+  margin: 0 auto 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem;
+  font-family: var(--sans);
+  font-size: .78rem;
+  color: var(--muted);
+}
+.print-button {
+  font-family: var(--sans);
+  font-size: .8rem;
+  letter-spacing: .04em;
+  color: #fff;
+  background: var(--accent);
+  border: 0;
+  border-radius: 999px;
+  padding: .45rem 1rem;
+  cursor: pointer;
+}
+.print-button:hover { background: #6d2419; }
+.back-link { color: var(--muted); text-decoration: underline; }
+.hint { margin-left: auto; }
+
+/* ---------- the sheet ---------- */
+.cv {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 16mm 18mm 14mm;
+  background: var(--paper);
+  box-shadow: 0 1px 3px rgba(20, 22, 26, .12), 0 24px 60px -30px rgba(20, 22, 26, .45);
+}
+
+.cv-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: .7rem;
+  border-bottom: 2px solid var(--ink);
+}
+
+h1 {
+  font-size: 27px;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  margin: 0 0 .18rem;
+  line-height: 1.1;
+}
+
+.headline {
+  font-family: var(--sans);
+  font-size: 11.5px;
+  letter-spacing: .02em;
+  color: var(--muted);
+  margin: 0;
+}
+
+.contact {
+  font-family: var(--sans);
+  font-size: 10.5px;
+  font-style: normal;
+  line-height: 1.62;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+/* ---------- sections ---------- */
+section { margin-top: .95rem; }
+
+h2 {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 .45rem;
+  padding-bottom: .18rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.body { margin: 0; font-size: 12.5px; color: var(--ink-soft); }
+
+.row {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: .5rem;
+  padding: .16rem 0;
+}
+
+.when {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--muted);
+  margin: 0;
+  padding-top: .2rem;
+  white-space: nowrap;
+}
+
+.primary { margin: 0; font-size: 12.5px; font-weight: 600; }
+.secondary { margin: .06rem 0 0; font-size: 11.5px; color: var(--ink-soft); }
+
+.pubs {
+  margin: 0;
+  padding-left: 1.15rem;
+  font-size: 12px;
+}
+.pubs li { margin-bottom: .3rem; padding-left: .15rem; }
+.pubs .me { font-weight: 600; }
+.pubs em { font-style: italic; }
+
+.plain {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 12px;
+}
+.plain li { margin-bottom: .12rem; }
+
+/* ---------- print ---------- */
+@page {
+  size: A4;
+  margin: 14mm 16mm;
+}
+
+@media print {
+  body {
+    padding: 0;
+    background: #fff;
+    font-size: 10pt;
+  }
+  .toolbar { display: none !important; }
+  .cv {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  section { page-break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+
+@media screen and (max-width: 800px) {
+  body { padding: 1rem .6rem 3rem; }
+  .cv {
+    width: 100%;
+    min-height: 0;
+    padding: 1.4rem 1.2rem;
+  }
+  .cv-head { flex-direction: column; gap: .6rem; }
+  .contact { text-align: left; }
+  .row { grid-template-columns: 1fr; gap: .1rem; }
+}
